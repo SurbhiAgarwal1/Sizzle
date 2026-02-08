@@ -1,0 +1,31 @@
+name: BLT Timer Automation
+
+on:
+  project_v2_item:
+    types: [edited, converted]
+  issues:
+    types: [assigned, unassigned, closed]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Process Event
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BLT_API_URL: ${{ secrets.BLT_API_URL }}
+          BLT_API_TOKEN: ${{ secrets.BLT_API_TOKEN }}
+          SIZZLE_API_URL: ${{ secrets.SIZZLE_API_URL }}
+          SIZZLE_API_TOKEN: ${{ secrets.SIZZLE_API_TOKEN }}
+        run: node src/index.js
