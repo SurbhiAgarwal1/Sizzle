@@ -23,7 +23,7 @@ This GitHub Action automatically manages time tracking for issues by integrating
 
 Go to your repository's **Settings > Secrets and variables > Actions** and add:
 
-- `BLT_API_URL`: Your BLT backend API endpoint (e.g., `https://your-blt-instance.com/api/github-timer-webhook/`)
+- `BLT_API_URL`: Your BLT backend API endpoint (e.g., `http://127.0.0.1:8000/api/github-timer-webhook/` for local or `https://your-blt-instance.com/api/github-timer-webhook/` for production)
 - `BLT_API_TOKEN`: Your BLT API authentication token
 
 **Legacy Support** (optional):
